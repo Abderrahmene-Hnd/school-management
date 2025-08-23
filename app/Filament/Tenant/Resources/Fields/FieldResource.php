@@ -22,8 +22,6 @@ class FieldResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
 
-    protected static ?string $recordTitleAttribute = 'Filière';
-
     public static function form(Schema $schema): Schema
     {
         return FieldForm::configure($schema);
@@ -54,5 +52,21 @@ class FieldResource extends Resource
             'view' => ViewField::route('/{record}'),
             'edit' => EditField::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Filières');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Filières');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Filières');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Filière');
     }
 }

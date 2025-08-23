@@ -15,17 +15,7 @@ class SessionsTable
     {
         return $table
             ->columns([
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
-                TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('ip_address')
-                    ->searchable(),
-                TextColumn::make('last_activity')
-                    ->numeric()
-                    ->sortable(),
+                //
             ])
             ->filters([
                 //

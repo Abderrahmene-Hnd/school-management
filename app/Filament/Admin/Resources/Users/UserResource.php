@@ -22,8 +22,6 @@ class UserResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Users;
 
-    protected static ?string $recordTitleAttribute = 'Utilisateurs';
-
     public static function form(Schema $schema): Schema
     {
         return UserForm::configure($schema);
@@ -54,5 +52,21 @@ class UserResource extends Resource
             'view' => ViewUser::route('/{record}'),
             'edit' => EditUser::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Utilisateurs');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Utilisateurs');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Utilisateurs');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Utilisateur');
     }
 }

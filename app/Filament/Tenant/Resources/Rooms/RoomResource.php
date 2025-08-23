@@ -22,8 +22,6 @@ class RoomResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Home;
 
-    protected static ?string $recordTitleAttribute = 'Salles';
-
     public static function form(Schema $schema): Schema
     {
         return RoomForm::configure($schema);
@@ -54,5 +52,21 @@ class RoomResource extends Resource
             'view' => ViewRoom::route('/{record}'),
             'edit' => EditRoom::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Salles');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Salles');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Salles');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Salle');
     }
 }

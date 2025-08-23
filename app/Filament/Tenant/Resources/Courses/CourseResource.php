@@ -22,30 +22,24 @@ class CourseResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BookOpen;
 
-    protected static ?string $recordTitleAttribute = 'Cours';
-
     public static function form(Schema $schema): Schema
     {
         return CourseForm::configure($schema);
     }
-
     public static function infolist(Schema $schema): Schema
     {
         return CourseInfolist::configure($schema);
     }
-
     public static function table(Table $table): Table
     {
         return CoursesTable::configure($table);
     }
-
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-
     public static function getPages(): array
     {
         return [
@@ -54,5 +48,21 @@ class CourseResource extends Resource
             'view' => ViewCourse::route('/{record}'),
             'edit' => EditCourse::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Cours');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Cours');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Cours');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Cour');
     }
 }

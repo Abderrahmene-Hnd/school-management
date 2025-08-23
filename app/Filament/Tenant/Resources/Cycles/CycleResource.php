@@ -22,8 +22,6 @@ class CycleResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ChartPie;
 
-    protected static ?string $recordTitleAttribute = 'Cycles';
-
     public static function form(Schema $schema): Schema
     {
         return CycleForm::configure($schema);
@@ -54,5 +52,21 @@ class CycleResource extends Resource
             'view' => ViewCycle::route('/{record}'),
             'edit' => EditCycle::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Cycles');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Cycles');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Cycles');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Cycle');
     }
 }

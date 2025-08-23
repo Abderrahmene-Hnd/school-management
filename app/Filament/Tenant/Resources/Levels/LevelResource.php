@@ -22,8 +22,6 @@ class LevelResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ChartBar;
 
-    protected static ?string $recordTitleAttribute = 'Niveaux';
-
     public static function form(Schema $schema): Schema
     {
         return LevelForm::configure($schema);
@@ -54,5 +52,21 @@ class LevelResource extends Resource
             'view' => ViewLevel::route('/{record}'),
             'edit' => EditLevel::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Niveaux');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Niveaux');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Niveaux');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Niveau');
     }
 }

@@ -22,8 +22,6 @@ class SessionResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Calendar;
 
-    protected static ?string $recordTitleAttribute = 'Sessions';
-
     public static function form(Schema $schema): Schema
     {
         return SessionForm::configure($schema);
@@ -54,5 +52,21 @@ class SessionResource extends Resource
             'view' => ViewSession::route('/{record}'),
             'edit' => EditSession::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Sessions');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Sessions');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Sessions');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Session');
     }
 }

@@ -11,13 +11,7 @@ class SessionInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('id')
-                    ->label('ID'),
-                TextEntry::make('user_id')
-                    ->numeric(),
-                TextEntry::make('ip_address'),
-                TextEntry::make('last_activity')
-                    ->numeric(),
+                //
             ]);
     }
 }

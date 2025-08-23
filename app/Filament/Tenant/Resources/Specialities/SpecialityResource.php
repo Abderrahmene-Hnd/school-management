@@ -22,8 +22,6 @@ class SpecialityResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Star;
 
-    protected static ?string $recordTitleAttribute = 'Specialités';
-
     public static function form(Schema $schema): Schema
     {
         return SpecialityForm::configure($schema);
@@ -54,5 +52,21 @@ class SpecialityResource extends Resource
             'view' => ViewSpeciality::route('/{record}'),
             'edit' => EditSpeciality::route('/{record}/edit'),
         ];
+    }
+    public static function getNavigationLabel(): string
+    {
+        return trans('Specialités');
+    }
+    public static function getPluralModelLabel(): string
+    {
+        return trans('Specialités');
+    }
+    public static function getModelLabel(): string
+    {
+        return trans('Specialités');
+    }
+    public static function getLabel(): ?string
+    {
+        return trans('Specialité');
     }
 }
