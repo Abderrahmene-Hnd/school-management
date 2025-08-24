@@ -18,7 +18,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
+        'phone',
+        'birthday',
+        'type', 
         'email',
         'password',
     ];
@@ -45,6 +49,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+     public function getNameAttribute(): string
+    {
+        return trim("{$this->firstname} {$this->lastname}");
+    }
+    
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'course_professors',  'professor_id', 'course_id');

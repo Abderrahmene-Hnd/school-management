@@ -5,6 +5,8 @@ namespace App\Filament\Admin\Resources\Users\Schemas;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\DatePicker;
 
 class UserForm
 {
@@ -12,8 +14,34 @@ class UserForm
     {
         return $schema
             ->components([
-                TextInput::make('name')
+                TextInput::make('firstname')
+                    ->label('Prénom')
                     ->required(),
+
+                TextInput::make('lastname')
+                    ->label('Nom')
+                    ->required(),
+
+                TextInput::make('phone')
+                    ->label('Téléphone')
+                    ->tel()
+                    ->required(),
+
+                DatePicker::make('birthday')
+                    ->label('Date de naissance')
+                    ->required(),
+
+                Select::make('type')
+                    ->label('Rôle utilisateur')
+                    ->options([
+                        \App\Enums\UserType::SuperAdmin->value => 'Super Admin',
+                        \App\Enums\UserType::Admin->value => 'Admin',
+                        \App\Enums\UserType::Client->value => 'Client',
+                    ])
+
+                    ->default(\App\Enums\UserType::Client->value)
+                    ->required(),
+
                 TextInput::make('email')
                     ->label('Email address')
                     ->email()

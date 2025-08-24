@@ -16,6 +16,18 @@ class UsersTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nom et Prénom')
+                    ->searchable(),
+              
+                TextColumn::make('phone')
+                    ->label('Téléphone')
+                    ->searchable(),
+                TextColumn::make('birthday')
+                    ->label('Date de naissance')
+                    ->date()
+                    ->sortable(),
+                TextColumn::make('type')
+                    ->label('Rôle utilisateur')
                     ->searchable(),
                 TextColumn::make('email')
                     ->label('Email address')
