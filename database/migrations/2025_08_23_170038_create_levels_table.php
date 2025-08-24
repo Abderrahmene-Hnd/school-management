@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('levels', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique(); // e.g. CS101
             $table->string('name');
-            $table->longText('description')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('years')->default(1); // 1,2,3
+            $table->integer('semesters')->default(2); // 1,2
             $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')->references('id')->on('cycles')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();

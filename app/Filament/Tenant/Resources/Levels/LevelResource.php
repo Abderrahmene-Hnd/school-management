@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 class LevelResource extends Resource
 {
     protected static ?string $model = Level::class;
+    protected static ?int $navigationSort = 5;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ChartBar;
 
@@ -52,6 +53,10 @@ class LevelResource extends Resource
             'view' => ViewLevel::route('/{record}'),
             'edit' => EditLevel::route('/{record}/edit'),
         ];
+    }
+    public static function getnavigationGroup(): ?string
+    {
+        return trans('Gestion');
     }
     public static function getNavigationLabel(): string
     {

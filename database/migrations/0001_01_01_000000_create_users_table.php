@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('phone');
             $table->date('birthday');
-            $table->enum('type', UserType::getValues())->default(UserType::Client->value);
+            $table->string('title')->nullable();
+            $table->text('bio')->nullable();
+            $table->enum('type', UserType::getValues())->default(UserType::Client);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

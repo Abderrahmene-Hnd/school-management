@@ -3,14 +3,14 @@
 namespace App\Filament\Tenant\Resources\Rooms\Schemas;
 
 use Filament\Schemas\Schema;
+use App\Services\InfolistService;
+use Filament\Infolists\Components\TextEntry;
 
 class RoomInfolist
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
-            ->components([
-                //
-            ]);
+            ->components(InfolistService::getRoomInfolist());
     }
 }

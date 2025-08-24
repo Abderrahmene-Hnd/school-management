@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Speciality extends Model
 {
-    protected $fillable = ['name', 'description', 'field_id'];
+    protected $fillable = ['code', 'name', 'description', 'field_id'];
 
     public function field()
     {

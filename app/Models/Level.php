@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    protected $fillable = ['name', 'description', 'cycle_id'];
+    protected $fillable = ['code', 'name', 'description', 'years', 'semestres', 'cycle_id'];
 
     public function cycle()
     {

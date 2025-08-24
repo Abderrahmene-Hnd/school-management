@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cycle extends Model
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['code', 'name', 'description', 'duration'];
 
     public function specialities()
     {
