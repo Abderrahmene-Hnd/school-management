@@ -195,7 +195,7 @@ class FormService
                 ->required(),
 
             Select::make('fields')
-                ->label('Domaines')
+                ->label('Filières')
                 ->multiple()
                 ->searchable()
                 ->getSearchResultsUsing(
@@ -245,7 +245,7 @@ class FormService
             Select::make('courses')
                 ->label('Cours')
                 ->relationship('courses', 'name')
-                ->label('Domaines')
+                ->label('Filières')
                 ->multiple()
                 ->searchable()
                 ->getSearchResultsUsing(

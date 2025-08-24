@@ -142,7 +142,7 @@ class InfolistService
                             'warning' => 'laboratoire',
                         ]),
                     TextEntry::make('fields.name')
-                        ->label('Domaines')
+                        ->label('Filières')
                         ->bulleted()
                         ->limitList(10),
                     TextEntry::make('description')->label('Description')->markdown(),

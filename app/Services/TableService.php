@@ -220,7 +220,7 @@ class TableService
                 ]),
 
             TextColumn::make('fields.name')
-                ->label('Domaines')
+                ->label('Filières')
                 ->formatStateUsing(fn($state) => is_array($state) ? implode(', ', $state) : $state)
                 ->limit(30),
 
