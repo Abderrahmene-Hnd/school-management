@@ -49,7 +49,7 @@ class FormService
 
             // SELECT avec toutes les features
             Select::make('field_id')
-                ->label('Domaine')
+                ->label('Filière')
                 ->searchable()
                 ->getSearchResultsUsing(
                     fn(string $search): array =>

@@ -77,7 +77,7 @@ class TableService
                 ->searchable(),
 
             TextColumn::make('field.name')
-                ->label('Domaine')
+                ->label('Filière')
                 ->sortable()
                 ->searchable(),
 

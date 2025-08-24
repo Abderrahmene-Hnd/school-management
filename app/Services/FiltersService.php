@@ -54,7 +54,7 @@ class FiltersService
             Filter::make('field_id')
                 ->form([
                     Select::make('field_id')
-                        ->label('Domaine')
+                        ->label('Filière')
                         ->relationship('field', 'name')
                         ->searchable(),
                 ])

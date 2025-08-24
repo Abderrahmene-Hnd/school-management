@@ -42,7 +42,7 @@ class InfolistService
                 ->schema([
                     TextEntry::make('code')->label('Code'),
                     TextEntry::make('name')->label('Nom de la spécialité'),
-                    TextEntry::make('field.name')->label('Domaine'),
+                    TextEntry::make('field.name')->label('Filière'),
                     TextEntry::make('description')->label('Description')->markdown(),
                     TextEntry::make('created_at')->label('Créé le')->dateTime('d/m/Y H:i'),
                 ]),
