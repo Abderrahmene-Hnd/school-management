@@ -245,7 +245,6 @@ class FormService
             Select::make('courses')
                 ->label('Cours')
                 ->relationship('courses', 'name')
-                ->label('Filières')
                 ->multiple()
                 ->searchable()
                 ->getSearchResultsUsing(
