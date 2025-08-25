@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('cycles', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
-            $table->longText('description')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('duration')->nullable();
             $table->timestamps();
         });
     }

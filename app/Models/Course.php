@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['code', 'name', 'description', 'duration', 'type', 'per_week', 'per_month'];
 
     public function levels()
     {

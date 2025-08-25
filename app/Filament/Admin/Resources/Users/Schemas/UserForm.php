@@ -34,12 +34,12 @@ class UserForm
                 Select::make('type')
                     ->label('Rôle utilisateur')
                     ->options([
-                        \App\Enums\UserType::SuperAdmin->value => 'Super Admin',
-                        \App\Enums\UserType::Admin->value => 'Admin',
-                        \App\Enums\UserType::Client->value => 'Client',
+                        \App\Enums\UserType::SuperAdmin => 'Super Admin',
+                        \App\Enums\UserType::Admin => 'Admin',
+                        \App\Enums\UserType::Client => 'Client',
                     ])
 
-                    ->default(\App\Enums\UserType::Client->value)
+                    ->default(\App\Enums\UserType::Client)
                     ->required(),
 
                 TextInput::make('email')

@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Enums\CourseType;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -13,8 +14,13 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
-            $table->longText('description')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('duration')->nullable();
+            $table->enum('type', CourseType::getValues())->default(CourseType::Elective);
+            $table->integer('per_week')->nullable();
+            $table->integer('per_month')->nullable();
             $table->timestamps();
         });
     }

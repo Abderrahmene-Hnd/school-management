@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Tenant\Resources\Cycles\Tables;
+namespace App\Filament\Tenant\Resources\Professors\Tables;
 
 use Filament\Tables\Table;
 use App\Services\TableService;
@@ -11,13 +11,13 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
 
-class CyclesTable
+class ProfessorsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
-            ->columns(TableService::getCycleTable())
-            ->filters(FiltersService::getCycleFilters())
+            ->columns(TableService::getProfessorTable())
+            ->filters(FiltersService::getProfessorFilters())
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),

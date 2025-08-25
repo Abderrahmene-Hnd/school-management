@@ -22,7 +22,9 @@ class User extends Authenticatable
         'lastname',
         'phone',
         'birthday',
-        'type', 
+        'type',
+        'bio',
+        'title',
         'email',
         'password',
     ];
@@ -50,11 +52,11 @@ class User extends Authenticatable
         ];
     }
 
-     public function getNameAttribute(): string
+    public function getNameAttribute(): string
     {
         return trim("{$this->firstname} {$this->lastname}");
     }
-    
+
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'course_professors',  'professor_id', 'course_id');

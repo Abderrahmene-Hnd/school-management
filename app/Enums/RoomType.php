@@ -11,9 +11,13 @@ use BenSampo\Enum\Enum;
  * @method static static Check()
  * @method static static Approval()
  */
-final class UserType extends Enum
+final class RoomType extends Enum
 {
-    const SuperAdmin = 'super_admin';
-    const Admin = 'admin';
-    const Client = 'client';
+    const lecture = 'lecture';
+
+    const lab = 'lab';
+
+    const seminar = 'seminar';
+
+    const other = 'other';
 }

@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 class RoomResource extends Resource
 {
     protected static ?string $model = Room::class;
+    protected static ?int $navigationSort = 7;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Home;
 
@@ -52,6 +53,10 @@ class RoomResource extends Resource
             'view' => ViewRoom::route('/{record}'),
             'edit' => EditRoom::route('/{record}/edit'),
         ];
+    }
+    public static function getnavigationGroup(): ?string
+    {
+        return trans('Resources');
     }
     public static function getNavigationLabel(): string
     {

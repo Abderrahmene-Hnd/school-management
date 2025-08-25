@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AcademicSession extends Model
 {
-    //
+    protected $fillable = ['code', 'name', 'description'];
 }

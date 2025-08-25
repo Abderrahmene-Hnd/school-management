@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 class CycleResource extends Resource
 {
     protected static ?string $model = Cycle::class;
+    protected static ?int $navigationSort = 4;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::ChartPie;
 
@@ -52,6 +53,10 @@ class CycleResource extends Resource
             'view' => ViewCycle::route('/{record}'),
             'edit' => EditCycle::route('/{record}/edit'),
         ];
+    }
+    public static function getnavigationGroup(): ?string
+    {
+        return trans('Gestion');
     }
     public static function getNavigationLabel(): string
     {

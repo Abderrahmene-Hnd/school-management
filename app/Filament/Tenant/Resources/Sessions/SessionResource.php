@@ -19,6 +19,7 @@ use App\Filament\Tenant\Resources\Sessions\Schemas\SessionInfolist;
 class SessionResource extends Resource
 {
     protected static ?string $model = AcademicSession::class;
+    protected static ?int $navigationSort = 1;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Calendar;
 
@@ -52,6 +53,10 @@ class SessionResource extends Resource
             'view' => ViewSession::route('/{record}'),
             'edit' => EditSession::route('/{record}/edit'),
         ];
+    }
+    public static function getnavigationGroup(): ?string
+    {
+        return trans('Gestion');
     }
     public static function getNavigationLabel(): string
     {

@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 class CourseResource extends Resource
 {
     protected static ?string $model = Course::class;
+    protected static ?int $navigationSort = 6;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::BookOpen;
 
@@ -48,6 +49,10 @@ class CourseResource extends Resource
             'view' => ViewCourse::route('/{record}'),
             'edit' => EditCourse::route('/{record}/edit'),
         ];
+    }
+    public static function getnavigationGroup(): ?string
+    {
+        return trans('Gestion');
     }
     public static function getNavigationLabel(): string
     {

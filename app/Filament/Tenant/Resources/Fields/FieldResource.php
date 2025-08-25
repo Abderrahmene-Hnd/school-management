@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 class FieldResource extends Resource
 {
     protected static ?string $model = Field::class;
+    protected static ?int $navigationSort = 2;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
 
@@ -52,6 +53,10 @@ class FieldResource extends Resource
             'view' => ViewField::route('/{record}'),
             'edit' => EditField::route('/{record}/edit'),
         ];
+    }
+    public static function getnavigationGroup(): ?string
+    {
+        return trans('Gestion');
     }
     public static function getNavigationLabel(): string
     {
