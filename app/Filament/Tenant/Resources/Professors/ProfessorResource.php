@@ -21,7 +21,6 @@ class ProfessorResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?int $navigationSort = 8;
-
     protected static string|BackedEnum|null $navigationIcon = Heroicon::UserCircle;
 
     public static function form(Schema $schema): Schema

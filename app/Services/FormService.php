@@ -241,7 +241,6 @@ class FormService
                 ->label('Date de naissance')
                 ->required(),
 
-
             Select::make('courses')
                 ->label('Cours')
                 ->relationship('courses', 'name')
