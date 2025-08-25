@@ -58,6 +58,7 @@ class FormService
                         ->pluck('name', 'id')
                         ->toArray()
                 )
+                ->options(fn() => Field::get()->pluck('name', 'id'))
                 ->getOptionLabelUsing(fn($value): ?string => Field::find($value)?->name)
                 ->loadingMessage('Chargement des domaines...')
                 ->noSearchResultsMessage('Aucun domaine trouvé.')
@@ -101,6 +102,8 @@ class FormService
                     fn(string $search): array =>
                     Cycle::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray()
                 )
+                ->options(fn() => Cycle::get()->pluck('name', 'id'))
+
                 ->getOptionLabelUsing(fn($value): ?string => Cycle::find($value)?->name)
                 ->loadingMessage('Chargement des cycles...')
                 ->noSearchResultsMessage('Aucun cycle trouvé.')
@@ -122,7 +125,6 @@ class FormService
         return [
             TextInput::make('code')->label('Code')->required()->unique(ignoreRecord: true),
             TextInput::make('name')->label('Nom du cours')->required(),
-            TextInput::make('credits')->label('Crédits')->numeric(),
             TextInput::make('per_week')->label('Heures / semaine')->numeric(),
             TextInput::make('per_month')->label('Heures / mois')->numeric(),
 
@@ -134,12 +136,14 @@ class FormService
             // Levels
             Select::make('levels')
                 ->label('Niveaux')
+                ->relationship('levels', 'name')
                 ->multiple()
                 ->searchable()
                 ->getSearchResultsUsing(
                     fn(string $search): array =>
                     Level::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray()
                 )
+                ->options(fn() => Level::get()->pluck('name', 'id'))
                 ->getOptionLabelUsing(fn($value): ?string => Level::find($value)?->name)
                 ->loadingMessage('Chargement des niveaux...')
                 ->noSearchResultsMessage('Aucun niveau trouvé.')
@@ -153,21 +157,23 @@ class FormService
             // Professors
             Select::make('professors')
                 ->label('Professeurs')
+                ->relationship('professors', 'firstname')
                 ->multiple()
                 ->searchable()
                 ->getSearchResultsUsing(
                     fn(string $search): array =>
-                    User::where('last_name', 'like', "%{$search}%")
-                        ->orWhere('first_name', 'like', "%{$search}%")
+                    User::where('lastname', 'like', "%{$search}%")
+                        ->orWhere('firstname', 'like', "%{$search}%")
                         ->limit(50)
                         ->get()
-                        ->mapWithKeys(fn($p) => [$p->id => $p->first_name . ' ' . $p->last_name])
+                        ->mapWithKeys(fn($p) => [$p->id => $p->firstname . ' ' . $p->lastname])
                         ->toArray()
                 )
                 ->getOptionLabelUsing(
                     fn($value): ?string =>
-                    User::find($value)?->first_name . ' ' . User::find($value)?->last_name
+                    User::find($value)?->firstname . ' ' . User::find($value)?->lastname
                 )
+                ->options(fn() => User::get()->pluck('name', 'id'))
                 ->loadingMessage('Chargement des professeurs...')
                 ->noSearchResultsMessage('Aucun professeur trouvé.')
                 ->searchingMessage('Recherche en cours...')
@@ -195,6 +201,7 @@ class FormService
                 ->required(),
 
             Select::make('fields')
+                ->relationship('fields', 'name')
                 ->label('Filières')
                 ->multiple()
                 ->searchable()
@@ -202,6 +209,7 @@ class FormService
                     fn(string $search): array =>
                     Field::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray()
                 )
+                ->options(fn() => Field::get()->pluck('name', 'id'))
                 ->getOptionLabelUsing(fn($value): ?string => Field::find($value)?->name)
                 ->loadingMessage('Chargement des domaines...')
                 ->noSearchResultsMessage('Aucun domaine trouvé.')
@@ -250,6 +258,7 @@ class FormService
                     fn(string $search): array =>
                     Course::where('name', 'like', "%{$search}%")->limit(50)->pluck('name', 'id')->toArray()
                 )
+                ->options(fn() => Course::get()->pluck('name', 'id'))
                 ->getOptionLabelUsing(fn($value): ?string => Course::find($value)?->name)
                 ->loadingMessage('Chargement des Cours...')
                 ->noSearchResultsMessage('Aucun Cour trouvé.')
@@ -267,6 +276,7 @@ class FormService
                 ->email()
                 ->required(),
             DateTimePicker::make('email_verified_at'),
+
             TextInput::make('password')
                 ->password()
                 ->required(),

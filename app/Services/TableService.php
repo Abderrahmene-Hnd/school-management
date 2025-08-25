@@ -159,9 +159,6 @@ class TableService
                 ->sortable()
                 ->searchable(),
 
-            TextColumn::make('credits')
-                ->label('Crédits'),
-
             TextColumn::make('per_week')
                 ->label('Heures / semaine'),
 
@@ -181,7 +178,7 @@ class TableService
                 ->formatStateUsing(fn($state) => is_array($state) ? implode(', ', $state) : $state)
                 ->limit(30),
 
-            TextColumn::make('professors.last_name')
+            TextColumn::make('professors.lastname')
                 ->label('Professeurs')
                 ->formatStateUsing(fn($state) => is_array($state) ? implode(', ', $state) : $state)
                 ->limit(30),

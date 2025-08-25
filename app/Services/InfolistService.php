@@ -96,7 +96,6 @@ class InfolistService
                 ->schema([
                     TextEntry::make('code')->label('Code'),
                     TextEntry::make('name')->label('Nom du cours'),
-                    TextEntry::make('credits')->label('Crédits'),
                     TextEntry::make('per_week')->label('Heures / semaine'),
                     TextEntry::make('per_month')->label('Heures / mois'),
                     TextEntry::make('type')
@@ -114,7 +113,7 @@ class InfolistService
                         ->label('Professeurs')
                         ->formatStateUsing(
                             fn($record) =>
-                            $record->professors->map(fn($p) => $p->first_name . ' ' . $p->last_name)->toArray()
+                            $record->professors->map(fn($p) => $p->firstname . ' ' . $p->lastname)->implode(', ')
                         )
                         ->bulleted()
                         ->limitList(10),
@@ -157,8 +156,8 @@ class InfolistService
         return [
             Section::make('Professeur')
                 ->schema([
-                    TextEntry::make('first_name')->label('Prénom'),
-                    TextEntry::make('last_name')->label('Nom'),
+                    TextEntry::make('firstname')->label('Prénom'),
+                    TextEntry::make('lastname')->label('Nom'),
                     TextEntry::make('email')->label('Email'),
                     TextEntry::make('phone')->label('Téléphone'),
                     TextEntry::make('courses.name')

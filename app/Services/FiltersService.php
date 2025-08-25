@@ -127,7 +127,7 @@ class FiltersService
                 ->form([
                     Select::make('professor_id')
                         ->label('Professeur')
-                        ->relationship('professors', 'last_name')
+                        ->relationship('professors', 'lastname')
                         ->searchable(),
                 ])
                 ->query(
